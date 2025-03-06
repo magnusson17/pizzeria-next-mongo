@@ -1,0 +1,22 @@
+#header,
+.header-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: red;
+    
+    nav {
+        display: flex;
+        column-gap: 20px;
+    }
+}
+
+.header-admin {background-color: yellow;}
+
+input[type=text],
+input[type=number],
+input[type=submit] {
+    padding: 10px;
+    border: 1px solid black;
+}

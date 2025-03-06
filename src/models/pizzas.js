@@ -6,9 +6,14 @@ const pizzaSchema = mongoose.Schema({
         required: true
     },
     prezzo: {
-        type: String,
+        type: Number,
         required: true
-    }
-}, {timestamps: true})
+    },
+    ingredienti: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ingredient',
+        required: true
+    }]
+}, { timestamps: true })
 
 export const Pizza = mongoose.models.Pizza || mongoose.model('Pizza', pizzaSchema)

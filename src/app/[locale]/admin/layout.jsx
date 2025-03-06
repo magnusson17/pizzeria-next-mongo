@@ -1,5 +1,6 @@
 import "@/lib/db.js"
 import { Provider } from  "@/app/provider";
+import HeaderAdmin from "@/components/layout/HeaderAdmin";
 
 export const metadata = {
     title: "Create Next App",
@@ -7,5 +8,10 @@ export const metadata = {
 };
 
 export default function AdminLayout({ children }) {
-    return <Provider>{children}</Provider>
+    return (
+        <Provider>
+            <HeaderAdmin />
+            {children}
+        </Provider>
+    )
 }

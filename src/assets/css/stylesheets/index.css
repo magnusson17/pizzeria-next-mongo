@@ -1,0 +1,169 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 6, ../sass/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: 'StenaSans';
+}
+
+/* line 27, ../sass/_reset.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 29, ../sass/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 33, ../sass/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 36, ../sass/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 39, ../sass/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 42, ../sass/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 47, ../sass/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 51, ../sass/_reset.scss */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*/ reset form /*/
+/* line 57, ../sass/_reset.scss */
+input,
+select,
+textarea {
+  border: none;
+}
+
+/* line 62, ../sass/_reset.scss */
+input:focus,
+select,
+textarea:focus {
+  outline: none;
+}
+
+/* line 67, ../sass/_reset.scss */
+input,
+textarea {
+  resize: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 73, ../sass/_reset.scss */
+input[type='radio'],
+select {
+  -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari and Chrome */
+  appearance: none;
+}
+
+/* line 80, ../sass/_reset.scss */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+/* line 83, ../sass/_reset.scss */
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+/* line 86, ../sass/_reset.scss */
+video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+/* line 89, ../sass/_reset.scss */
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* line 2, ../sass/_font.scss */
+body * {
+  font-family: 'Inter', sans-serif;
+}
+
+/* line 7, ../sass/_font.scss */
+h1 {
+  font-size: 32px;
+}
+
+/* line 10, ../sass/_font.scss */
+h2 {
+  font-size: 24px;
+}
+
+/* line 1, ../sass/_style.scss */
+#header,
+.header-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: red;
+}
+/* line 9, ../sass/_style.scss */
+#header nav,
+.header-admin nav {
+  display: flex;
+  column-gap: 20px;
+}
+
+/* line 15, ../sass/_style.scss */
+.header-admin {
+  background-color: yellow;
+}
+
+/* line 17, ../sass/_style.scss */
+input[type=text],
+input[type=number],
+input[type=submit] {
+  padding: 10px;
+  border: 1px solid black;
+}
