@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import Ingredient from './ingredients'
 
 const pizzaSchema = mongoose.Schema({
     nome: {

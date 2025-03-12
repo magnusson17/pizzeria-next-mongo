@@ -167,3 +167,15 @@ input[type=submit] {
   padding: 10px;
   border: 1px solid black;
 }
+
+/* line 1, ../sass/_pizzas.scss */
+.page-pizzas__price {
+  background-color: black;
+  color: #FFFFFF;
+  padding: 10px;
+}
+
+/* line 7, ../sass/_pizzas.scss */
+.page-pizzas__ingredients {
+  display: flex;
+}
