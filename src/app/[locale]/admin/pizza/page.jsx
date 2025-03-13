@@ -3,16 +3,20 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { addPizza, deletePizza } from "@/actions/pizzaCRUD"
+import { handleDelete } from "@/lib/publicFun"
 import { urlApi } from "@/lib/publicVars"
+import FilterContent from "@/components/FilterContent"
 
 export default function Pizza() {
     const [ingredients, setIngredients] = useState([])
+    const [fetchedPizzas, setFetchedPizzas] = useState([])
     const [pizzas, setPizzas] = useState([])
 
     const fetchPizzas = async () => {
         try {
             const res = await fetch(`${urlApi}/pizzas`)
             const { data } = await res.json()
+            setFetchedPizzas(data)
             setPizzas(data)
         } catch (error) {
             console.log(error)
@@ -21,7 +25,7 @@ export default function Pizza() {
 
     const fetchIngredients = async () => {
         try {
-            const res = await fetch(`${urlApi}/ingredients/all`)
+            const res = await fetch(`${urlApi}/ingredients`)
             const { data } = await res.json()
             setIngredients(data)
         } catch (error) {
@@ -33,7 +37,7 @@ export default function Pizza() {
         fetchPizzas()
         fetchIngredients()
     }, [])
-    
+
     const handleSubmit = async e => {
         e.preventDefault()
         const formData = new FormData(e.target)
@@ -49,13 +53,8 @@ export default function Pizza() {
         fetchPizzas()
     }
 
-    const handleDelete = async id => {
-        await deletePizza(id)
-        fetchPizzas()
-    }
-
     return (
-        <div>
+        <div className="page-admin-pizzas">
             <form onSubmit={handleSubmit}>
                 <input type="text" name="nome" placeholder="nome" />
                 <input type="number" name="prezzo" placeholder="prezzo" />
@@ -63,21 +62,36 @@ export default function Pizza() {
                     return (
                         <div key={el._id}>
                             <input type="checkbox" name="ingredienti" value={el._id} />
-                            <label htmlFor="ingredienti">{el.nome}</label>
+                            <label htmlFor="ingredienti">{el.nome.it}</label>
                         </div>
                     )
                 })}
                 <input type="submit" />
             </form>
 
+            <FilterContent 
+                fetchedElements={fetchedPizzas}
+                setElements={setPizzas}
+                hasTranslation={false}
+            />
+
             <h1>Contenuti</h1>
+
+            <div className="page-admin-pizzas__row">
+                <div className="page-admin-pizzas__main-col">Titolo</div>
+                <div className="page-admin-pizzas__secondary-col">Modifica</div>
+                <div className="page-admin-pizzas__secondary-col">Elimina</div>
+            </div>
+
             <ul>
-                {pizzas.map(el => {
+                {pizzas.map(el => {                    
                     return (
-                        <li key={el._id}>
-                            <h2>{ el.nome }</h2>
-                            <button onClick={() => handleDelete(el._id)}>cancella</button>
-                            <Link href={`/admin/pizza/${el._id}`}>modifica</Link>
+                        <li key={el._id} className="page-admin-pizzas__row">
+                            <h2 className="page-admin-pizzas__main-col">{el.nome}</h2>
+                            <Link href={`/admin/pizza/${el._id}`} className="page-admin-pizzas__secondary-col">modifica</Link>
+                            <div className="page-admin-pizzas__secondary-col">
+                                <button onClick={() => handleDelete(el._id, deletePizza, fetchPizzas)}>cancella</button>
+                            </div>
                         </li>
                     )
                 })}

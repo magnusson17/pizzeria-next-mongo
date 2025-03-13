@@ -30,8 +30,8 @@ export default function Admin() {
         <main>
             <h1>Admin page</h1>
 
-            <Link href="/admin/pizza/all">Add pizza</Link> <br/>
-            <Link href="/admin/ingredient/all">Add ingredient</Link> <br/>
+            <Link href="/admin/pizza">Add pizza</Link> <br/>
+            <Link href="/admin/ingredient">Add ingredient</Link> <br/>
 
             {showSession()}
         </main>

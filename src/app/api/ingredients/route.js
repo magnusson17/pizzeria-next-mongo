@@ -7,7 +7,7 @@ import { Ingredient } from "@/models/ingredients"
 export async function GET() {
     try {
         await connect()
-        const data = await Ingredient.find()
+        const data = await Ingredient.find().sort({ "nome.it": 1 })
 
         return NextResponse.json({ success: true, data })
     } catch (error) {

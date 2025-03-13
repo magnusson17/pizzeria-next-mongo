@@ -2,8 +2,14 @@ import mongoose from "mongoose"
 
 const ingredientSchema = mongoose.Schema({
     nome: {
-        type: String,
-        required: true
+        it: {
+            type: String,
+            required: true
+        },
+        en: {
+            type: String,
+            required: true
+        },
     },
 }, { timestamps: true })
 

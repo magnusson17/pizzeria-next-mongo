@@ -5,8 +5,8 @@ export default function HeaderAdmin() {
         <div className="header-admin">
             <nav>
                 <Link href="/admin">admin</Link>
-                <Link href="/admin/pizza/all">lista pizze</Link>
-                <Link href="/admin/ingredient/all">lista ingredienti</Link>
+                <Link href="/admin/pizza">lista pizze</Link>
+                <Link href="/admin/ingredient">lista ingredienti</Link>
             </nav>
         </div>
     )

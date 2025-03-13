@@ -23,7 +23,7 @@ export default function Pizza() {
 
     const fetchIngredients = async () => {
         try {
-            const res = await fetch(`${urlApi}/ingredients/all`)
+            const res = await fetch(`${urlApi}/ingredients`)
             const { data } = await res.json()
             setIngredients(data)
         } catch (error) {
@@ -49,7 +49,7 @@ export default function Pizza() {
             ingredienti
         })
 
-        router.push("/admin/pizza/all")
+        router.push("/admin/pizza")
     }
 
     if (!pizza) return <p>Loading...</p>
@@ -68,7 +68,7 @@ export default function Pizza() {
                             value={el._id}
                             defaultChecked={pizza.ingredienti.some(ing => ing._id === el._id)}
                         />
-                        <label htmlFor="ingredienti">{el.nome}</label>
+                        <label htmlFor="ingredienti">{el.nome.it}</label>
                     </div>
                 )
             })}

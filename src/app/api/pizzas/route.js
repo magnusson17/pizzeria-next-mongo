@@ -10,7 +10,9 @@ export async function GET() {
         await connect()
         // .populate: al posto del id di ogni ingrediente associato alla singola pizza
         // popola la key ingredienti con i contenuti ingrediente, in questo caso farà un retrieve solo del id e del "nome"
-        const data = await Pizza.find().populate("ingredienti", "nome")
+        const data = await Pizza.find()
+            .populate("ingredienti", "nome")
+            .sort({ updatedAt: -1 })
 
         return NextResponse.json({ success: true, data })
     } catch (error) {

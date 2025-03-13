@@ -179,3 +179,21 @@ input[type=submit] {
 .page-pizzas__ingredients {
   display: flex;
 }
+
+/* line 1, ../sass/_admin-pizza.scss */
+.page-admin-pizzas__row {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+/* line 8, ../sass/_admin-pizza.scss */
+.page-admin-pizzas__main-col {
+  width: 50%;
+}
+
+/* line 11, ../sass/_admin-pizza.scss */
+.page-admin-pizzas__secondary-col {
+  width: 25%;
+}
