@@ -7,6 +7,7 @@ export default function HeaderAdmin() {
                 <Link href="/admin">admin</Link>
                 <Link href="/admin/pizza">lista pizze</Link>
                 <Link href="/admin/ingredient">lista ingredienti</Link>
+                <Link href="/admin/drink">lista bevande</Link>
             </nav>
         </div>
     )
