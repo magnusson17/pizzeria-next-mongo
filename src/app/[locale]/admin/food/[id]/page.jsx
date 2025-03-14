@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { updatePizza } from "@/actions/pizzaCRUD"
+import { updatePizza } from "@/actions/foodCRUD"
 import { urlApi } from "@/lib/publicVars"
 
 export default function Pizza() {

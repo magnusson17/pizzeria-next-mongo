@@ -1,6 +1,6 @@
 "use server"
 
-import { GET as handler } from "@/app/api/pizzas/route"
+import { GET as handler } from "@/app/api/foods/route"
 import { Fragment } from "react"
 
 export default async function Page({ params }) {

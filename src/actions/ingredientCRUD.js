@@ -4,12 +4,15 @@ import connectDB from "@/lib/db"
 import { Ingredient } from "@/models/ingredients"
 
 export const addIngredient = async values => {
-    const { it, en } = values
+    const { titoloIt, titoloEn } = values
 
     await connectDB()
 
     const newIngredient = new Ingredient ({
-        nome: { it, en }
+        titolo: { 
+            it: titoloIt,
+            en: titoloEn
+        }
     })
 
     try {

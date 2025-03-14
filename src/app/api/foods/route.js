@@ -2,15 +2,16 @@
 
 import { NextResponse } from "next/server"
 import connect from "@/lib/db"
-import { Pizza } from "@/models/pizzas"
+import { Food } from "@/models/foods"
 
 // il nome della funzione deve essere GET(), POST()...
 export async function GET() {
+    await connect()
+    
     try {
-        await connect()
-        // .populate: al posto del id di ogni ingrediente associato alla singola pizza
+        // .populate: al posto del id di ogni ingrediente associato alla singola Food
         // popola la key ingredienti con i contenuti ingrediente, in questo caso farà un retrieve solo del id e del "nome"
-        const data = await Pizza.find()
+        const data = await Food.find()
             .populate("ingredienti", "nome")
             .sort({ updatedAt: -1 })
 

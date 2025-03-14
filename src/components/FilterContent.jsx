@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-export default function FilterContent({ fetchedElements, setElements, hasTranslation }) {
+export default function FilterContent({ fetchedElements, setPrintedElements }) {
     const [search, setSearch] = useState("")
 
     const filterContent = e => {
@@ -10,9 +10,9 @@ export default function FilterContent({ fetchedElements, setElements, hasTransla
         setSearch(val)
 
         if (val === "") {
-            setElements(fetchedElements)
+            setPrintedElements(fetchedElements)
         } else {
-            setElements(fetchedElements.filter(ing => hasTranslation ? ing.nome.it.toLowerCase().includes(val) : ing.nome.toLowerCase().includes(val)))
+            setPrintedElements(fetchedElements.filter( ing => ing.titolo.it.toLowerCase().includes(val) ))
         }
     }
 

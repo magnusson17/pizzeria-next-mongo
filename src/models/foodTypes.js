@@ -1,18 +1,18 @@
 import mongoose from "mongoose"
 
-const ingredientSchema = mongoose.Schema({
+const foodTypeSchema = mongoose.Schema({
     titolo: {
         it: {
             type: String,
             required: true,
-            unique: true
         },
         en: {
             type: String,
             required: true,
-            unique: true
         },
-    },
+    }
 }, { timestamps: true })
 
-export const Ingredient = mongoose.models.Ingredient || mongoose.model('Ingredient', ingredientSchema)
+foodTypeSchema.index({ "titolo.it": 1, "titolo.en": 1 }, { unique: true })
+
+export const FoodType = mongoose.models.FoodType || mongoose.model("FoodType", foodTypeSchema)
