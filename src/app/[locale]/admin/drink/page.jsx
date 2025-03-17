@@ -1,34 +1,16 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useFetchData } from "@/custom-hooks/useFetchData"
 import { addDrink, deleteDrink } from "@/actions/drinkCRUD"
 import FilterContent from "@/components/FilterContent"
 import { handleDelete } from "@/lib/publicFun"
-import { urlApi } from "@/lib/publicVars"
 
 export default function Drink() {
-    const [fetchedDrinks, setFetchedDrinks] = useState([])
-    const [drinks, setDrinks] = useState([])
-
-    const fetchDrinks = async () => {
-        try {
-            const res = await fetch(`${urlApi}/drinks`)
-            const { data } = await res.json()
-            setFetchedDrinks(data)
-            setDrinks(data)
-        } catch(error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        fetchDrinks()
-    }, [])
+    const { handleFetch, fetchedElements, setPrintedElements, printedElements } = useFetchData("drinks")
 
     const handleSubmit = e => {
         e.preventDefault()
         const formData = new FormData(e.target)
-        console.log(formData.get("titolo-it"))
 
         const add = addDrink({
             titoloIt: formData.get("titolo-it"),
@@ -36,7 +18,7 @@ export default function Drink() {
             prezzo: formData.get("prezzo")
         })
 
-        fetchDrinks()
+        handleFetch()
     }
 
     return (
@@ -51,17 +33,16 @@ export default function Drink() {
             </form>
     
             <FilterContent
-                fetchedElements={fetchedDrinks}
-                setElements={setDrinks}
-                hasTranslation={true}
+                fetchedElements={fetchedElements}
+                setPrintedElements={setPrintedElements}
             />
 
             <ul>
-                {drinks.map(drink => {
+                {printedElements.map(drink => {
                     return (
                         <li key={drink._id}>
                             <h2>{drink.titolo.it}</h2>
-                            <button onClick={() => handleDelete(drink._id, deleteDrink, fetchDrinks)}>elimina</button>
+                            <button onClick={() => handleDelete(drink._id, deleteDrink, handleFetch)}>elimina</button>
                         </li>
                     )
                 })}

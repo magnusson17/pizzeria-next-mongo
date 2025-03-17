@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react"
 import { urlApi } from "@/lib/publicVars"
 
-export function useFetchData(endpoint) {
-    const [fetchedElements, setFetchedElements] = useState([])
-    const [printedElements, setPrintedElements] = useState([])
+export function useFetchSingleData(endpoint) {
+    const [fetchedElement, setFetchedElement] = useState(null)
 
     const handleFetch = async () => {
         try {
             const res = await fetch(`${urlApi}/${endpoint}`)
             const { data } = await res.json()
-            setFetchedElements(data)
-            setPrintedElements(data)
+            console.log(data)
+            setFetchedElement(data)
         } catch (error) {
             console.log(error)
         }
@@ -20,5 +19,5 @@ export function useFetchData(endpoint) {
         handleFetch()
     }, [])
 
-    return { handleFetch, fetchedElements, setPrintedElements, printedElements }
+    return { handleFetch, fetchedElement }
 }

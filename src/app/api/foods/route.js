@@ -12,7 +12,8 @@ export async function GET() {
         // .populate: al posto del id di ogni ingrediente associato alla singola Food
         // popola la key ingredienti con i contenuti ingrediente, in questo caso farà un retrieve solo del id e del "nome"
         const data = await Food.find()
-            .populate("ingredienti", "nome")
+            .populate("ingredienti", "titolo")
+            .populate("tipologie", "titolo")
             .sort({ updatedAt: -1 })
 
         return NextResponse.json({ success: true, data })

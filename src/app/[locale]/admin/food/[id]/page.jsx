@@ -1,74 +1,71 @@
 "use client"
 
 import { useParams, useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
-import { updatePizza } from "@/actions/foodCRUD"
-import { urlApi } from "@/lib/publicVars"
+import { updateFood } from "@/actions/foodCRUD"
+import { useFetchData } from "@/custom-hooks/useFetchData"
+import { useFetchSingleData } from "@/custom-hooks/useFetchSingleData"
 
-export default function Pizza() {
+export default function Food() {
     const { id } = useParams()
     const router = useRouter()
-    const [pizza, setPizza] = useState(null)
-    const [ingredients, setIngredients] = useState([])
 
-    const fetchPizza = async () => {
-        try {
-            const res = await fetch(`${urlApi}/pizzas/${id}`)
-            const { data } = await res.json()
-            setPizza(data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const fetchIngredients = async () => {
-        try {
-            const res = await fetch(`${urlApi}/ingredients`)
-            const { data } = await res.json()
-            setIngredients(data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        fetchPizza()
-        fetchIngredients()
-    }, [])
+    const { fetchedElement: fetchedElementFood } = useFetchSingleData(`foods/${id}`)
+    const { fetchedElements: fetchedElementsIngredients } = useFetchData(`ingredients`)
+    const { fetchedElements: fetchedElementsFoodTypes } = useFetchData(`food-types`)
 
     const handleSubmit = async e => {
         e.preventDefault()
         const formData = new FormData(e.target)
 
         const ingredienti = formData.getAll("ingredienti").map(el => el)
+        const tipologie = formData.getAll("tipologie").map(el => el)
 
-        const update = await updatePizza({
+        const update = await updateFood({
             id,
-            nome: formData.get("nome"),
+            titoloIt: formData.get("titolo-it"),
+            titoloEn: formData.get("titolo-en"),
             prezzo: formData.get("prezzo"),
-            ingredienti
+            ingredienti,
+            tipologie
         })
 
-        router.push("/admin/pizza")
+        router.push("/admin/food")
     }
 
-    if (!pizza) return <p>Loading...</p>
+    if (!fetchedElementFood) return <p>Loading...</p>
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="nome" defaultValue={pizza.nome} />
-            <input type="number" name="prezzo" defaultValue={pizza.prezzo} />
+            <input type="text" name="titolo-it" defaultValue={fetchedElementFood.titolo.it} />
+            <input type="text" name="titolo-en" defaultValue={fetchedElementFood.titolo.en} />
+            <input type="number" name="prezzo" defaultValue={fetchedElementFood.prezzo} />
 
-            {ingredients.map(el => {
+            <div>Ingredienti</div>
+            {fetchedElementsIngredients.map(el => {
                 return (
                     <div key={el._id}>
                         <input 
                             type="checkbox"
                             name="ingredienti"
                             value={el._id}
-                            defaultChecked={pizza.ingredienti.some(ing => ing._id === el._id)}
+                            defaultChecked={fetchedElementFood.ingredienti.some(ing => ing._id === el._id)}
                         />
-                        <label htmlFor="ingredienti">{el.nome.it}</label>
+                        <label htmlFor="ingredienti">{el.titolo.it}</label>
+                    </div>
+                )
+            })}
+            
+            <div>Tipologie</div>
+            {fetchedElementsFoodTypes.map(el => {
+                return (
+                    <div key={el._id}>
+                        <input 
+                            type="checkbox"
+                            name="tipologie"
+                            value={el._id}
+                            defaultChecked={fetchedElementFood.tipologie.some(type => type._id === el._id)}
+                        />
+                        <label htmlFor="ingredienti">{el.titolo.it}</label>
                     </div>
                 )
             })}

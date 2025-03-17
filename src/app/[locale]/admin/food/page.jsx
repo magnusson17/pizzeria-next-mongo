@@ -1,26 +1,21 @@
 "use client"
 
 import Link from "next/link"
-import { addPizza, deletePizza } from "@/actions/foodCRUD"
+import { addFood, deleteFood } from "@/actions/foodCRUD"
 import { handleDelete } from "@/lib/publicFun"
 import FilterContent from "@/components/FilterContent"
 import { useFetchData } from "@/custom-hooks/useFetchData"
 
 export default function Food() {
     const { 
-        handleFetch: handleFetchPizza,
-        fetchedElements: fetchedElementsPizza,
-        setPrintedElements: setPrintedElementsPizza,
-        printedElements: printedElementsPizza 
+        handleFetch: handleFetchFoods,
+        fetchedElements: fetchedElementsFoods,
+        setPrintedElements: setPrintedElementsFoods,
+        printedElements: printedElementsFoods 
     } = useFetchData("foods")
     
-    const { 
-        fetchedElements: fetchedElementsIngredient,
-    } = useFetchData("ingredients")
-    
-    const { 
-        fetchedElements: fetchedElementsFoodType,
-    } = useFetchData("food-types")
+    const { fetchedElements: fetchedElementsIngredient } = useFetchData("ingredients")
+    const { fetchedElements: fetchedElementsFoodType } = useFetchData("food-types")
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -29,7 +24,7 @@ export default function Food() {
         const ingredienti = formData.getAll("ingredienti").map(el => el)
         const tipologie = formData.getAll("tipologie").map(el => el)
 
-        const add = await addPizza({
+        const add = await addFood({
             titoloIt: formData.get("titolo-it"),
             titoloEn: formData.get("titolo-en"),
             prezzo: formData.get("prezzo"),
@@ -40,13 +35,13 @@ export default function Food() {
         alert(add.message)
 
         if (add.success) {
-            handleFetchPizza()
+            handleFetchFoods()
             e.target.reset()
         }
     }
 
     return (
-        <div className="page-admin-pizzas">
+        <div className="page-admin-foods">
             <form onSubmit={handleSubmit}>
                 <input type="text" name="titolo-it" placeholder="titolo IT" />
                 <input type="text" name="titolo-en" placeholder="titolo EN" />
@@ -73,26 +68,26 @@ export default function Food() {
             </form>
 
             <FilterContent 
-                fetchedElements={fetchedElementsPizza}
-                setPrintedElements={setPrintedElementsPizza}
+                fetchedElements={fetchedElementsFoods}
+                setPrintedElements={setPrintedElementsFoods}
             />
 
             <h1>Contenuti</h1>
 
-            <div className="page-admin-pizzas__row">
-                <div className="page-admin-pizzas__main-col">Titolo</div>
-                <div className="page-admin-pizzas__secondary-col">Modifica</div>
-                <div className="page-admin-pizzas__secondary-col">Elimina</div>
+            <div className="page-admin-foods__row">
+                <div className="page-admin-foods__main-col">Titolo</div>
+                <div className="page-admin-foods__secondary-col">Modifica</div>
+                <div className="page-admin-foods__secondary-col">Elimina</div>
             </div>
 
             <ul>
-                {printedElementsPizza.map(el => {                    
+                {printedElementsFoods.map(el => {                    
                     return (
-                        <li key={el._id} className="page-admin-pizzas__row">
-                            <h2 className="page-admin-pizzas__main-col">{el.titolo.it}</h2>
-                            <Link href={`/admin/pizza/${el._id}`} className="page-admin-pizzas__secondary-col">modifica</Link>
-                            <div className="page-admin-pizzas__secondary-col">
-                                <button onClick={() => handleDelete(el._id, deletePizza, handleFetchPizza)}>cancella</button>
+                        <li key={el._id} className="page-admin-foods__row">
+                            <h2 className="page-admin-foods__main-col">{el.titolo.it}</h2>
+                            <Link href={`/admin/food/${el._id}`} className="page-admin-foods__secondary-col">modifica</Link>
+                            <div className="page-admin-foods__secondary-col">
+                                <button onClick={() => handleDelete(el._id, deleteFood, handleFetchFoods)}>cancella</button>
                             </div>
                         </li>
                     )

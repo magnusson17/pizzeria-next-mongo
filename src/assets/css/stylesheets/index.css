@@ -139,6 +139,11 @@ h2 {
   font-size: 24px;
 }
 
+/* line 13, ../sass/_font.scss */
+h3 {
+  font-size: 20px;
+}
+
 /* line 1, ../sass/_style.scss */
 #header,
 .header-admin {
@@ -146,7 +151,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: red;
+  background-color: #b91c1c;
 }
 /* line 9, ../sass/_style.scss */
 #header nav,
@@ -157,7 +162,7 @@ h2 {
 
 /* line 15, ../sass/_style.scss */
 .header-admin {
-  background-color: yellow;
+  background-color: #fffbeb;
 }
 
 /* line 17, ../sass/_style.scss */
@@ -168,20 +173,31 @@ input[type=submit] {
   border: 1px solid black;
 }
 
-/* line 1, ../sass/_pizzas.scss */
-.page-pizzas__price {
+/* line 1, ../sass/_food.scss */
+.page-food__macro-sect {
+  margin-bottom: 40px;
+}
+
+/* line 5, ../sass/_food.scss */
+.page-food__type-title {
+  background-color: #fffbeb;
+  width: 50%;
+}
+
+/* line 10, ../sass/_food.scss */
+.page-food__price {
   background-color: black;
   color: #FFFFFF;
   padding: 10px;
 }
 
-/* line 7, ../sass/_pizzas.scss */
-.page-pizzas__ingredients {
+/* line 16, ../sass/_food.scss */
+.page-food__ingredients {
   display: flex;
 }
 
 /* line 1, ../sass/_admin-pizza.scss */
-.page-admin-pizzas__row {
+.page-admin-foods__row {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -189,11 +205,11 @@ input[type=submit] {
 }
 
 /* line 8, ../sass/_admin-pizza.scss */
-.page-admin-pizzas__main-col {
+.page-admin-foods__main-col {
   width: 50%;
 }
 
 /* line 11, ../sass/_admin-pizza.scss */
-.page-admin-pizzas__secondary-col {
+.page-admin-foods__secondary-col {
   width: 25%;
 }

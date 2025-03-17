@@ -5,7 +5,7 @@ import connectDB from "@/lib/db"
 import { Food } from "@/models/foods"
 
 // create
-export const addPizza = async values => {
+export const addFood = async values => {
 
     const { 
         titoloIt,
@@ -20,7 +20,7 @@ export const addPizza = async values => {
 
     await connectDB()
 
-    const newPizza = await new Food({
+    const newFood = await new Food({
         titolo: {
             it: titoloIt,
             en: titoloEn,
@@ -30,11 +30,11 @@ export const addPizza = async values => {
         tipologie: tipologieObjectIds,
     })
 
-    console.log(newPizza)
+    console.log(newFood)
     
     try {
-        await newPizza.save()
-        console.log("newPizza saved")
+        await newFood.save()
+        console.log("newFood saved")
 
         return { success: true, message: "Nuovo contenuto aggiunto!" }
     } catch (error) {
@@ -48,11 +48,11 @@ export const addPizza = async values => {
 // read - vedi app/api
 
 // update
-export const updatePizza = async values => {
+export const updateFood = async values => {
     const { id, nome, prezzo, ingredienti } = values
 
     try {
-        await Pizza.findByIdAndUpdate(
+        await Food.findByIdAndUpdate(
             id,
             { titolo, prezzo, ingredienti },
             {new: true}
@@ -63,12 +63,12 @@ export const updatePizza = async values => {
 }
 
 // delete
-export const deletePizza = async id => {
+export const deleteFood = async id => {
     await connectDB()
 
     try {
         await Food.findByIdAndDelete(id)
-        console.log("Pizza deleted")
+        console.log("Food deleted")
     } catch (error) {
         console.log(error)
     }
