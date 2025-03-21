@@ -3,6 +3,10 @@
 import { GET as handlerFoods } from "@/app/api/foods/route"
 import { Fragment } from "react"
 
+export async function generateStaticParams() {
+    return [{ locale: "it" }, { locale: "en" }]
+}
+
 export default async function Page({ params }) {
     const { locale } = await params
 
@@ -13,6 +17,7 @@ export default async function Page({ params }) {
 
     const group = new Map()
     
+    // raggruppo i contenuti in un map dove ogni chiave è l'obj contenene i dati del food type
     sortedFoodsByPrice.forEach(food => {
         food.tipologie.forEach(tip => {
             let existingKey = [...group.keys()].find(
@@ -27,8 +32,9 @@ export default async function Page({ params }) {
         })
     })
 
+    // piccolo component che stampa ogni singolo ingrediente
     const IngredientName = ({ ing, isLast }) => {
-        return <li>{locale === "it" ? ing.titolo.it : ing.titolo.en}{!isLast && ",\u00A0"}</li>
+        return <li>{ing.titolo[locale]}{!isLast && ",\u00A0"}</li>
     }
 
     return (
@@ -38,16 +44,18 @@ export default async function Page({ params }) {
             <div>
                 {[...group].map(tip => {
                     return (
+                        // l'obj key del map è ora trasformata nel 1o el dell'array
                         <div key={tip[0]._id} className="page-food__macro-sect">
-                            <h2 className="page-food__type-title">{tip[0].titolo.it}</h2>
+                            <h2 className="page-food__type-title">{tip[0].titolo[locale]}</h2>
 
+                            {/* l'array value del map è ora trasformato nel 2o el dell'array */}
                             {tip[1].map((content, index) => {
                                 return (
                                     <Fragment key={content._id}>
                                         {/* stampo il prezzo se l'el prima NON ha un prezzo =, o se l'el è il 1o el */}
                                         {((tip[1][index - 1] && tip[1][index].prezzo !== tip[1][index - 1].prezzo) || index === 0) ? <h2 className="page-food__price">{content.prezzo} &euro;</h2> : ''}
 
-                                        <h3>{content.titolo.it}</h3>
+                                        <h3>{content.titolo[locale]}</h3>
                                         <ul className="page-food__ingredients">
                                             {content.ingredienti.map((ing, index) => {
                                                 return (
