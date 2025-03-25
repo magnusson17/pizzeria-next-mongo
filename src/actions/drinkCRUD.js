@@ -28,6 +28,35 @@ export const addDrink = async values => {
 // read
 
 // update
+export const updateDrink = async values => {
+    const {
+        id,
+        titoloIt,
+        titoloEn,
+        prezzo
+    } = values
+
+    await connectDB()
+
+    try {
+        await Drink.findByIdAndUpdate(
+            id,
+            {
+                titolo: {
+                    it: titoloIt,
+                    en: titoloEn,
+                },
+                prezzo
+            },
+            { new: true, runValidators: true }
+        )
+
+        return { success: true, message: "Ehhhh ma che bravo!"}
+    } catch (error) {
+        console.log(error)
+        return { success: false, message: "Ziooooo, compilali bene"}
+    }
+}
 
 // delete
 export const deleteDrink = async id => {

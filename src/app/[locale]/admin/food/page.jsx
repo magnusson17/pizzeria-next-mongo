@@ -7,11 +7,11 @@ import FilterContent from "@/components/FilterContent"
 import { useFetchData } from "@/custom-hooks/useFetchData"
 
 export default function Food() {
-    const { 
+    const {
         handleFetch: handleFetchFoods,
         fetchedElements: fetchedElementsFoods,
         setPrintedElements: setPrintedElementsFoods,
-        printedElements: printedElementsFoods 
+        printedElements: printedElementsFoods
     } = useFetchData("foods")
     
     const { fetchedElements: fetchedElementsIngredient } = useFetchData("ingredients")

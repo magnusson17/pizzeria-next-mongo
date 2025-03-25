@@ -8,7 +8,6 @@ export function useFetchSingleData(endpoint) {
         try {
             const res = await fetch(`${urlApi}/${endpoint}`)
             const { data } = await res.json()
-            console.log(data)
             setFetchedElement(data)
         } catch (error) {
             console.log(error)

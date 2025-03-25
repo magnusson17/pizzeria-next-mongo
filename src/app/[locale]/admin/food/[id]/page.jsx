@@ -5,7 +5,7 @@ import { updateFood } from "@/actions/foodCRUD"
 import { useFetchData } from "@/custom-hooks/useFetchData"
 import { useFetchSingleData } from "@/custom-hooks/useFetchSingleData"
 
-export default function Food() {
+export default function SingleFood() {
     const { id } = useParams()
     const router = useRouter()
 
@@ -29,6 +29,9 @@ export default function Food() {
             tipologie
         })
 
+        if (!update.success) return alert(update.message)
+
+        alert(update.message)
         router.push("/admin/food")
     }
 

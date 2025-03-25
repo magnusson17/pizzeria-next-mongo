@@ -12,6 +12,7 @@ export default function Header() {
             <nav>
                 <Link href={`/${locale}`}>Home</Link>
                 <Link href={`/${locale}/food`}>Cibi</Link>
+                <Link href={`/${locale}/drink`}>Bevande</Link>
             </nav>
             <SwitchLang />
         </header>

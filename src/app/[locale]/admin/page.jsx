@@ -30,7 +30,7 @@ export default function Admin() {
         <main>
             <h1>Admin page</h1>
 
-            <Link href="/admin/pizza">Add pizza</Link> <br/>
+            <Link href="/admin/food">Add pizza</Link> <br/>
             <Link href="/admin/ingredient">Add ingredient</Link> <br/>
 
             {showSession()}

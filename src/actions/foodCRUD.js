@@ -7,7 +7,7 @@ import { Food } from "@/models/foods"
 // create
 export const addFood = async values => {
 
-    const { 
+    const {
         titoloIt,
         titoloEn,
         prezzo,
@@ -30,8 +30,6 @@ export const addFood = async values => {
         tipologie: tipologieObjectIds,
     })
 
-    console.log(newFood)
-    
     try {
         await newFood.save()
         console.log("newFood saved")
@@ -40,8 +38,8 @@ export const addFood = async values => {
     } catch (error) {
         console.log(error)
 
-        if (error.code === 11000) return { success: false, message: "Errore! Esiste già un contenuto con questo titolo"}
-        return { success: false, message: "Errore! Controlla di aver compilato correttamente i campi zio"}
+        if (error.code === 11000) return { success: false, message: "Errore! Esiste già un contenuto con questo titolo" }
+        return { success: false, message: "Errore! Controlla di aver compilato correttamente i campi zio" }
     }
 }
 
@@ -49,16 +47,39 @@ export const addFood = async values => {
 
 // update
 export const updateFood = async values => {
-    const { id, nome, prezzo, ingredienti } = values
+
+    const {
+        id,
+        titoloIt,
+        titoloEn,
+        prezzo,
+        ingredienti,
+        tipologie
+    } = values
+
+    await connectDB()
 
     try {
         await Food.findByIdAndUpdate(
             id,
-            { titolo, prezzo, ingredienti },
-            {new: true}
+            {
+                titolo: {
+                    it: titoloIt,
+                    en: titoloEn
+                },
+                prezzo,
+                ingredienti,
+                tipologie
+            },
+            { new: true, runValidators: true  }
         )
+
+        console.log("Food updated")
+        return { success: true, message: "Braaaavo zio, hai aggiornato il contenuto"}
+
     } catch (error) {
         console.log(error)
+        return { success: false, message: "erroooooooore, compilali bene sti campi zio"}
     }
 }
 
