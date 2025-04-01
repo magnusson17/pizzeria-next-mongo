@@ -124,6 +124,15 @@ video::-webkit-media-controls-start-playback-button {
   display: none !important;
 }
 
+/* line 1, ../sass/_root-vars.scss */
+:root {
+  --color-red: #B91B1B;
+  --color-beige: #FFFBEB;
+  --color-black: #000000;
+  --color-blue: #0B5985;
+  --color-white: #FFFFFF;
+}
+
 /* line 2, ../sass/_font.scss */
 body * {
   font-family: 'Inter', sans-serif;
@@ -135,42 +144,52 @@ h1 {
 }
 
 /* line 10, ../sass/_font.scss */
-h2 {
-  font-size: 24px;
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--color-black);
+  text-transform: uppercase;
 }
 
-/* line 13, ../sass/_font.scss */
-h3 {
-  font-size: 20px;
+/* line 17, ../sass/_font.scss */
+.title-small {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+/* line 23, ../sass/_font.scss */
+.title-small--red {
+  color: var(--color-red);
 }
 
 /* line 1, ../sass/_style.scss */
+input[type=text],
+input[type=number],
+input[type=submit] {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/* line 1, ../sass/_header.scss */
 #header,
 .header-admin {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #b91c1c;
+  background-color: var(--color-red);
 }
-/* line 9, ../sass/_style.scss */
+/* line 9, ../sass/_header.scss */
 #header nav,
 .header-admin nav {
   display: flex;
   column-gap: 20px;
 }
 
-/* line 15, ../sass/_style.scss */
+/* line 1, ../sass/_header-admin.scss */
 .header-admin {
   background-color: #fffbeb;
-}
-
-/* line 17, ../sass/_style.scss */
-input[type=text],
-input[type=number],
-input[type=submit] {
-  padding: 10px;
-  border: 1px solid black;
 }
 
 /* line 1, ../sass/_food.scss */
@@ -212,4 +231,10 @@ input[type=submit] {
 /* line 11, ../sass/_admin-pizza.scss */
 .page-admin-foods__secondary-col {
   width: 25%;
+}
+
+/* line 1, ../sass/_components.scss */
+.loading-circle {
+  width: 50px;
+  height: 50px;
 }

@@ -1,0 +1,13 @@
+#header,
+.header-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--color-red);
+    
+    nav {
+        display: flex;
+        column-gap: 20px;
+    }
+}

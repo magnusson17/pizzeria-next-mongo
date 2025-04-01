@@ -46,16 +46,16 @@ export default async function Page({ params }) {
                     return (
                         // l'obj key del map è ora trasformata nel 1o el dell'array
                         <div key={tip[0]._id} className="page-food__macro-sect">
-                            <h2 className="page-food__type-title">{tip[0].titolo[locale]}</h2>
+                            <h2 className="page-food__type-title title">{tip[0].titolo[locale]}</h2>
 
                             {/* l'array value del map è ora trasformato nel 2o el dell'array */}
                             {tip[1].map((content, index) => {
                                 return (
                                     <Fragment key={content._id}>
                                         {/* stampo il prezzo se l'el prima NON ha un prezzo =, o se l'el è il 1o el */}
-                                        {((tip[1][index - 1] && tip[1][index].prezzo !== tip[1][index - 1].prezzo) || index === 0) ? <h2 className="page-food__price">{content.prezzo} &euro;</h2> : ''}
+                                        {((tip[1][index - 1] && tip[1][index].prezzo !== tip[1][index - 1].prezzo) || index === 0) ? <h2 className="page-food__price title-small">{content.prezzo} &euro;</h2> : ''}
 
-                                        <h3>{content.titolo[locale]}</h3>
+                                        <h3 className="title-small title-small--red">{content.titolo[locale]}</h3>
                                         <ul className="page-food__ingredients">
                                             {content.ingredienti.map((ing, index) => {
                                                 return (
