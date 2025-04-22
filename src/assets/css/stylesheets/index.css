@@ -126,6 +126,9 @@ video::-webkit-media-controls-start-playback-button {
 
 /* line 1, ../sass/_root-vars.scss */
 :root {
+  --basic-unit: 8px;
+  --header-height: calc(var(--basic-unit) * 8);
+  --gap-std: calc(var(--basic-unit) * 3);
   --color-red: #B91B1B;
   --color-beige: #FFFBEB;
   --color-black: #000000;
@@ -143,7 +146,7 @@ h1 {
   font-size: 32px;
 }
 
-/* line 10, ../sass/_font.scss */
+/* line 11, ../sass/_font.scss */
 .title {
   font-size: 30px;
   font-weight: 700;
@@ -151,16 +154,21 @@ h1 {
   text-transform: uppercase;
 }
 
-/* line 17, ../sass/_font.scss */
-.title-small {
+/* line 18, ../sass/_font.scss */
+.label {
   font-size: 18px;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-beige);
   text-transform: uppercase;
 }
-/* line 23, ../sass/_font.scss */
-.title-small--red {
+/* line 24, ../sass/_font.scss */
+.label--red {
   color: var(--color-red);
+}
+/* line 25, ../sass/_font.scss */
+.label--small {
+  font-size: 16px;
+  font-weight: 400;
 }
 
 /* line 1, ../sass/_style.scss */
@@ -174,17 +182,40 @@ input[type=submit] {
 /* line 1, ../sass/_header.scss */
 #header,
 .header-admin {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
   background-color: var(--color-red);
+  height: var(--header-height);
+  width: 100vw;
+  padding: 0 var(--gap-std);
+  z-index: 999;
 }
-/* line 9, ../sass/_header.scss */
+/* line 14, ../sass/_header.scss */
 #header nav,
 .header-admin nav {
   display: flex;
-  column-gap: 20px;
+  column-gap: var(--gap-std);
+}
+
+/* line 21, ../sass/_header.scss */
+.header__comp-langs {
+  position: relative;
+}
+
+/* line 22, ../sass/_header.scss */
+.header__comp-langs-switch {
+  display: flex;
+  cursor: pointer;
+}
+
+/* line 26, ../sass/_header.scss */
+.header__comp-langs-nav {
+  position: absolute;
+  top: 200%;
+  background-color: var(--color-red);
 }
 
 /* line 1, ../sass/_header-admin.scss */
@@ -237,4 +268,34 @@ input[type=submit] {
 .loading-circle {
   width: 50px;
   height: 50px;
+}
+
+/* line 1, ../sass/_homepage.scss */
+.homepage__intro {
+  position: fixed;
+  top: var(--header-height);
+  height: calc(90vh - var(--header-height));
+  width: 100vw;
+}
+
+/* line 8, ../sass/_homepage.scss */
+.homepage__wrapper-img-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* line 17, ../sass/_homepage.scss */
+body:has(.homepage__main) {
+  background-color: var(--color-beige);
+}
+
+/* line 19, ../sass/_homepage.scss */
+.homepage__main {
+  position: relative;
+  background-color: var(--color-beige);
+  margin-top: 90vh;
 }

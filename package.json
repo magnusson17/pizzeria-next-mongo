@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "bcryptjs": "^3.0.2",
+    "gsap": "^3.12.7",
     "mongoose": "^8.10.1",
     "next": "^15.2.3",
     "next-auth": "^4.24.11",
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "eslint": "^9",
-    "eslint-config-next": "15.1.7"
+    "eslint-config-next": "15.1.7",
+    "sass": "^1.87.0"
   }
 }

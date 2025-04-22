@@ -1,13 +1,30 @@
 #header,
 .header-admin {
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
     background-color: var(--color-red);
+    height: var(--header-height);
+    width: 100vw;
+    padding: 0 var(--gap-std);
+    z-index: 999;
     
     nav {
         display: flex;
-        column-gap: 20px;
+        column-gap: var(--gap-std);
     }
+}
+
+// comp lang
+.header__comp-langs {position: relative;}
+.header__comp-langs-switch {
+    display: flex;
+    cursor: pointer;
+}
+.header__comp-langs-nav {
+    position: absolute;
+    top: 200%;
+    background-color: var(--color-red);
 }

@@ -53,9 +53,9 @@ export default async function Page({ params }) {
                                 return (
                                     <Fragment key={content._id}>
                                         {/* stampo il prezzo se l'el prima NON ha un prezzo =, o se l'el è il 1o el */}
-                                        {((tip[1][index - 1] && tip[1][index].prezzo !== tip[1][index - 1].prezzo) || index === 0) ? <h2 className="page-food__price title-small">{content.prezzo} &euro;</h2> : ''}
+                                        {((tip[1][index - 1] && tip[1][index].prezzo !== tip[1][index - 1].prezzo) || index === 0) ? <h2 className="page-food__price label">{content.prezzo} &euro;</h2> : ''}
 
-                                        <h3 className="title-small title-small--red">{content.titolo[locale]}</h3>
+                                        <h3 className="label label--red">{content.titolo[locale]}</h3>
                                         <ul className="page-food__ingredients">
                                             {content.ingredienti.map((ing, index) => {
                                                 return (

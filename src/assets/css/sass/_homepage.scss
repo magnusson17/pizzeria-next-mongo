@@ -1,0 +1,23 @@
+.homepage__intro {
+    position: fixed;
+    top: var(--header-height);
+    height: calc(90vh - var(--header-height));
+    width: 100vw;
+}
+
+.homepage__wrapper-img-intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body:has(.homepage__main) {background-color: var(--color-beige);}
+
+.homepage__main {
+    position: relative;
+    background-color: var(--color-beige);
+    margin-top: 90vh;
+}

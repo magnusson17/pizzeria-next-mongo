@@ -10,9 +10,9 @@ export default function Header() {
     return (
         <header id="header">
             <nav>
-                <Link href={`/${locale}`}>Home</Link>
-                <Link href={`/${locale}/food`}>Cibi</Link>
-                <Link href={`/${locale}/drink`}>Bevande</Link>
+                <Link href={`/${locale}`} className="label label--small">Home</Link>
+                <Link href={`/${locale}/food`} className="label label--small">Cibi</Link>
+                <Link href={`/${locale}/drink`} className="label label--small">Bevande</Link>
             </nav>
             <SwitchLang />
         </header>
