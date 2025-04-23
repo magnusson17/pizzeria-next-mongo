@@ -11,7 +11,7 @@ export default function AdminLayout({ children }) {
     return (
         <Provider>
             <HeaderAdmin />
-            {children}
+            <div className="page-admin page">{children}</div>
         </Provider>
     )
 }

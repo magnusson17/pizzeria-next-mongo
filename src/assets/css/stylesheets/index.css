@@ -127,7 +127,10 @@ video::-webkit-media-controls-start-playback-button {
 /* line 1, ../sass/_root-vars.scss */
 :root {
   --basic-unit: 8px;
+  --unit-x2: calc(var(--basic-unit) * 2);
   --header-height: calc(var(--basic-unit) * 8);
+  --header-height-x2: calc(var(--header-height) * 2);
+  --gap-small: calc(var(--basic-unit) * 2);
   --gap-std: calc(var(--basic-unit) * 3);
   --color-red: #B91B1B;
   --color-beige: #FFFBEB;
@@ -171,11 +174,29 @@ h1 {
   font-weight: 400;
 }
 
+@media (max-width: 991px) {
+  /* line 33, ../sass/_font.scss */
+  .label--small {
+    font-size: 14px;
+  }
+}
 /* line 1, ../sass/_style.scss */
+.page {
+  margin-top: var(--header-height);
+  padding: var(--gap-std);
+}
+
+/* line 6, ../sass/_style.scss */
+.page-admin {
+  margin-top: var(--header-height-x2);
+}
+
+/* line 8, ../sass/_style.scss */
 input[type=text],
+input[type=password],
 input[type=number],
 input[type=submit] {
-  padding: 10px;
+  padding: var(--basic-unit);
   border: 1px solid black;
 }
 
@@ -200,22 +221,40 @@ input[type=submit] {
   column-gap: var(--gap-std);
 }
 
-/* line 21, ../sass/_header.scss */
-.header__comp-langs {
-  position: relative;
+/* line 20, ../sass/_header.scss */
+.header-admin {
+  top: var(--header-height);
+  z-index: 998;
 }
 
-/* line 22, ../sass/_header.scss */
+/* line 26, ../sass/_header.scss */
+.header__comp-langs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* line 32, ../sass/_header.scss */
 .header__comp-langs-switch {
   display: flex;
   cursor: pointer;
 }
 
-/* line 26, ../sass/_header.scss */
+/* line 36, ../sass/_header.scss */
 .header__comp-langs-nav {
   position: absolute;
-  top: 200%;
+  top: 100%;
+  left: calc(-1 * var(--gap-std));
   background-color: var(--color-red);
+  padding: var(--basic-unit) var(--gap-std);
+  border-bottom-left-radius: var(--unit-x2);
+  transform: translateX(100%);
+}
+/* line 45, ../sass/_header.scss */
+.header__comp-langs-nav a {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* line 1, ../sass/_header-admin.scss */
@@ -268,6 +307,32 @@ input[type=submit] {
 .loading-circle {
   width: 50px;
   height: 50px;
+}
+
+/* line 7, ../sass/_components.scss */
+.comp-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-small);
+}
+
+/* line 12, ../sass/_components.scss */
+.comp-form__wrapper-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  width: fit-content;
+}
+
+/* line 20, ../sass/_components.scss */
+.comp-cta {
+  width: fit-content;
+  background-color: var(--color-red);
+  padding: var(--unit-x2);
+  text-transform: uppercase;
+  color: var(--color-beige);
+  border: none;
+  cursor: pointer;
 }
 
 /* line 1, ../sass/_homepage.scss */

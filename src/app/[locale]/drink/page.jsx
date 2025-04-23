@@ -15,7 +15,7 @@ export default async function Page({ params }) {
     const drinkSortedByPrice = data.sort((a, b) => a.prezzo - b.prezzo)
 
     return (
-        <div>
+        <div className="page-drink page">
             <h1>Bevande</h1>
             <ul>
                 {drinkSortedByPrice.map(drink => {

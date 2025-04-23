@@ -41,7 +41,7 @@ export default function SingleFood() {
         <form onSubmit={handleSubmit}>
             <input type="text" name="titolo-it" defaultValue={fetchedElementFood.titolo.it} />
             <input type="text" name="titolo-en" defaultValue={fetchedElementFood.titolo.en} />
-            <input type="number" name="prezzo" defaultValue={fetchedElementFood.prezzo} />
+            <input type="number" step="0.01" name="prezzo" defaultValue={fetchedElementFood.prezzo} />
 
             <div>Ingredienti</div>
             {fetchedElementsIngredients.map(el => {

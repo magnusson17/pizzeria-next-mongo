@@ -12,6 +12,7 @@ export default function Admin() {
         if (status === "authenticated") {
             return (
                 <button
+                    className="comp-cta"
                     onClick={() => {
                         signOut({ redirect: false }).then(() => {
                             router.push("/")
@@ -27,13 +28,13 @@ export default function Admin() {
     }
     
     return (
-        <main>
+        <div className="comp-form">
             <h1>Admin page</h1>
 
-            <Link href="/admin/food">Add pizza</Link> <br/>
-            <Link href="/admin/ingredient">Add ingredient</Link> <br/>
+            <Link href="/admin/food">Add pizza</Link>
+            <Link href="/admin/ingredient">Add ingredient</Link>
 
             {showSession()}
-        </main>
+        </div>
     )
 }

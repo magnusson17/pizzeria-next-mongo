@@ -27,23 +27,23 @@ export default function Login() {
     }
 
     return (
-        <section>
-            <form onSubmit={handleSubmit}>
+        <div className="page-login page">
+            <form onSubmit={handleSubmit} className="comp-form">
                 {error && <div>{error}</div>}
                 <h1>Sign In</h1>
 
-                <div>
+                <div className="comp-form__wrapper-input">
                     <label>Username</label>
                     <input type="text" placeholder="Username" name="username"/>
                 </div>               
                 
-                <div>
+                <div className="comp-form__wrapper-input">
                     <label>Password</label>
                     <input type="password" placeholder="Password" name="password"/>
                 </div>
 
-                <button>Sign In</button>
+                <button className="comp-cta">Sign In</button>
             </form>
-        </section>
+        </div>
     )
 }

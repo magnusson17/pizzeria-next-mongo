@@ -29,7 +29,7 @@ export default function Drink() {
             <form onSubmit={handleSubmit}>
                 <input type="text" name="titolo-it" />
                 <input type="text" name="titolo-en" />
-                <input type="number" name="prezzo" />
+                <input type="number" step="0.01" name="prezzo" />
                 <input type="submit" />
             </form>
     

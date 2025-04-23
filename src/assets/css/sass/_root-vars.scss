@@ -1,11 +1,14 @@
 :root {
     // basics
     --basic-unit: 8px;
+    --unit-x2: calc(var(--basic-unit) * 2);
 
     // header
     --header-height: calc(var(--basic-unit) * 8);
+    --header-height-x2: calc(var(--header-height) * 2);
 
     // gap
+    --gap-small: calc(var(--basic-unit) * 2);
     --gap-std: calc(var(--basic-unit) * 3);
 
     // colors

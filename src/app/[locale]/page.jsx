@@ -19,7 +19,7 @@ export default function Home() {
                     height="1080"
                 />
             </div>
-            <div className='homepage__main'>
+            <div className='homepage__main page'>
                 <h1>{t('titolo')}</h1>
             </div>
         </div>

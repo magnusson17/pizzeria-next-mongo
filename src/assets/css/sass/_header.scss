@@ -17,14 +17,33 @@
     }
 }
 
+.header-admin {
+    top: var(--header-height);
+    z-index: 998;
+}
+
 // comp lang
-.header__comp-langs {position: relative;}
+.header__comp-langs {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 .header__comp-langs-switch {
     display: flex;
     cursor: pointer;
 }
 .header__comp-langs-nav {
     position: absolute;
-    top: 200%;
+    top: 100%;
+    left: calc(-1 * var(--gap-std));
     background-color: var(--color-red);
+    padding: var(--basic-unit) var(--gap-std);
+    border-bottom-left-radius: var(--unit-x2);
+    // x effetti
+    transform: translateX(100%);
+    a {
+        opacity: 0;
+        pointer-events: none;
+    }
 }

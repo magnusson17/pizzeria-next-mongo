@@ -45,7 +45,7 @@ export default function Food() {
             <form onSubmit={handleSubmit}>
                 <input type="text" name="titolo-it" placeholder="titolo IT" />
                 <input type="text" name="titolo-en" placeholder="titolo EN" />
-                <input type="number" name="prezzo" placeholder="prezzo" />
+                <input type="number" step="0.01" name="prezzo" placeholder="prezzo" />
                 <div>Ingredienti</div>
                 {fetchedElementsIngredient.map(el => {
                     return (

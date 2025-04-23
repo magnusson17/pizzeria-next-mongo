@@ -37,7 +37,7 @@ export default function SingleDrink() {
             <form onSubmit={handleSubmit}>
                 <input type="text" name="titolo-it" defaultValue={fetchedElement.titolo.it} />
                 <input type="text" name="titolo-en" defaultValue={fetchedElement.titolo.en} />
-                <input type="number" name="prezzo" defaultValue={fetchedElement.prezzo} />
+                <input type="number" step="0.01" name="prezzo" defaultValue={fetchedElement.prezzo} />
                 <input type="submit" />
             </form>
         </div>

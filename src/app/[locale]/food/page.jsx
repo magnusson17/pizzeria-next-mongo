@@ -38,7 +38,7 @@ export default async function Page({ params }) {
     }
 
     return (
-        <div className="page-food">
+        <div className="page-food page">
             <h1>Cibi</h1>
 
             <div>

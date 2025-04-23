@@ -1,6 +1,14 @@
+.page {
+    margin-top: var(--header-height);
+    padding: var(--gap-std);
+}
+
+.page-admin {margin-top: var(--header-height-x2)}
+
 input[type=text],
+input[type=password],
 input[type=number],
 input[type=submit] {
-    padding: 10px;
+    padding: var(--basic-unit);
     border: 1px solid black;
 }
