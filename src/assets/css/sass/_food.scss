@@ -1,5 +1,12 @@
-.page-food__macro-sect {
-    margin-bottom: 40px;
+.page-food__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-std);
+}
+
+.page-food__macro-sector {
+    display: flex;
+    flex-direction: column;
 }
 
 .page-food__type-title {
@@ -11,8 +18,10 @@
     background-color: black;
     color: #FFFFFF;
     padding: 10px;
+    margin-bottom: var(--gap-xs);
 }
 
 .page-food__ingredients {
     display: flex;
+    margin-bottom: var(--gap-xs);
 }

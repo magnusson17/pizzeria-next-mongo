@@ -1,5 +1,9 @@
 {
     "Home": {
         "titolo": "Welcome home!"
+    },
+    "Header": {
+        "food": "food",
+        "drinks": "drinks"
     }
 }

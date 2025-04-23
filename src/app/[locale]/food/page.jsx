@@ -39,13 +39,13 @@ export default async function Page({ params }) {
 
     return (
         <div className="page-food page">
-            <h1>Cibi</h1>
+            {/* <h1>Cibi</h1> */}
 
-            <div>
+            <div className="page-food__wrapper">
                 {[...group].map(tip => {
                     return (
                         // l'obj key del map è ora trasformata nel 1o el dell'array
-                        <div key={tip[0]._id} className="page-food__macro-sect">
+                        <div key={tip[0]._id} className="page-food__macro-sector">
                             <h2 className="page-food__type-title title">{tip[0].titolo[locale]}</h2>
 
                             {/* l'array value del map è ora trasformato nel 2o el dell'array */}

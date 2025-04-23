@@ -8,6 +8,7 @@
     --header-height-x2: calc(var(--header-height) * 2);
 
     // gap
+    --gap-xs: calc(var(--basic-unit));
     --gap-small: calc(var(--basic-unit) * 2);
     --gap-std: calc(var(--basic-unit) * 3);
 

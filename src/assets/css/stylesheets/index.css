@@ -130,6 +130,7 @@ video::-webkit-media-controls-start-playback-button {
   --unit-x2: calc(var(--basic-unit) * 2);
   --header-height: calc(var(--basic-unit) * 8);
   --header-height-x2: calc(var(--header-height) * 2);
+  --gap-xs: calc(var(--basic-unit));
   --gap-small: calc(var(--basic-unit) * 2);
   --gap-std: calc(var(--basic-unit) * 3);
   --color-red: #B91B1B;
@@ -263,26 +264,36 @@ input[type=submit] {
 }
 
 /* line 1, ../sass/_food.scss */
-.page-food__macro-sect {
-  margin-bottom: 40px;
+.page-food__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-std);
 }
 
-/* line 5, ../sass/_food.scss */
+/* line 7, ../sass/_food.scss */
+.page-food__macro-sector {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 12, ../sass/_food.scss */
 .page-food__type-title {
   background-color: #fffbeb;
   width: 50%;
 }
 
-/* line 10, ../sass/_food.scss */
+/* line 17, ../sass/_food.scss */
 .page-food__price {
   background-color: black;
   color: #FFFFFF;
   padding: 10px;
+  margin-bottom: var(--gap-xs);
 }
 
-/* line 16, ../sass/_food.scss */
+/* line 24, ../sass/_food.scss */
 .page-food__ingredients {
   display: flex;
+  margin-bottom: var(--gap-xs);
 }
 
 /* line 1, ../sass/_admin-pizza.scss */
@@ -339,7 +350,7 @@ input[type=submit] {
 .homepage__intro {
   position: fixed;
   top: var(--header-height);
-  height: calc(90vh - var(--header-height));
+  height: calc(80vh - var(--header-height));
   width: 100vw;
 }
 
@@ -362,5 +373,5 @@ body:has(.homepage__main) {
 .homepage__main {
   position: relative;
   background-color: var(--color-beige);
-  margin-top: 90vh;
+  margin-top: 80vh;
 }

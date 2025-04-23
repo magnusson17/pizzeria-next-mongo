@@ -1,7 +1,7 @@
 .homepage__intro {
     position: fixed;
     top: var(--header-height);
-    height: calc(90vh - var(--header-height));
+    height: calc(80vh - var(--header-height));
     width: 100vw;
 }
 
@@ -19,5 +19,5 @@ body:has(.homepage__main) {background-color: var(--color-beige);}
 .homepage__main {
     position: relative;
     background-color: var(--color-beige);
-    margin-top: 90vh;
+    margin-top: 80vh;
 }
